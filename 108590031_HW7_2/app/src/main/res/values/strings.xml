@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">108590031_HW7_2</string>
+    <string-array name="recipe">
+        <item>one</item>
+        <item>two</item>
+        <item>three</item>
+        <item>four</item>
+        <item>five</item>
+        <item>six</item>
+        <item>seven</item>
+        <item>eight</item>
+        <item>nine</item>
+        <item>ten</item>
+    </string-array>
+    <string-array name="contain">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string name="one">11</string>
+    <string name="two">22</string>
+    <string name="three">33</string>
+    <string name="four">44</string>
+    <string name="five">55</string>
+    <string name="six">66</string>
+    <string name="seven">77</string>
+    <string name="eight">88</string>
+    <string name="nine">99</string>
+    <string name="ten">100</string>
+</resources>
