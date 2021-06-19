@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/small"
+        android:icon="@drawable/small"
+        android:title="小"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/middle"
+        android:icon="@drawable/middle"
+        android:title="中"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/big"
+        android:icon="@drawable/big"
+        android:title="大"
+        app:showAsAction="ifRoom" />
+</menu>

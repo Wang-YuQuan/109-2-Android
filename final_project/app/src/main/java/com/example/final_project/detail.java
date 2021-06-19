@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
@@ -47,5 +49,28 @@ public class detail extends AppCompatActivity {
                 e.printStackTrace();
             }
         }).start();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.small:
+                mTextViewBody.setTextSize(16);
+                return true;
+            case R.id.middle:
+                mTextViewBody.setTextSize(20);
+                return true;
+            case R.id.big:
+                mTextViewBody.setTextSize(24);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
