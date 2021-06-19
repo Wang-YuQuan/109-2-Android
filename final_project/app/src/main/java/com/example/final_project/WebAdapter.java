@@ -73,6 +73,7 @@ class WebAdapter extends RecyclerView.Adapter<WebAdapter.ViewHolder>  {
         // Member Variables for the TextViews
         private TextView mTitleText;
         private TextView mInfoText;
+        private  TextView mdatetime;
 
         /**
          * Constructor for the ViewHolder, used in onCreateViewHolder().
@@ -85,6 +86,7 @@ class WebAdapter extends RecyclerView.Adapter<WebAdapter.ViewHolder>  {
             // Initialize the views.
             mTitleText = itemView.findViewById(R.id.title);
             mInfoText = itemView.findViewById(R.id.article);
+            mdatetime = itemView.findViewById(R.id.datetime);
             //mSportsImage = itemView.findViewById(sportsImage);
 
             // Set the OnClickListener to the entire view.
@@ -95,6 +97,7 @@ class WebAdapter extends RecyclerView.Adapter<WebAdapter.ViewHolder>  {
             // Populate the textviews with data.
             mTitleText.setText(current.getTitle());
             mInfoText.setText(current.getInfo());
+            mdatetime.setText(current.getDatetime());
             // Load the images into the ImageView using the Glide library.
             //Glide.with(mContext).load(currentSport.getImageResource()).into(mSportsImage);
             //mSportsImage.setImageResource(currentSport.getImageResource());
@@ -109,7 +112,7 @@ class WebAdapter extends RecyclerView.Adapter<WebAdapter.ViewHolder>  {
         public void onClick(View view) {
             WebInfo mInfo = Information.get(getAdapterPosition());
             Intent detailIntent = new Intent(mContext, detail.class);
-            detailIntent.putExtra("title", mInfo.getTitle());
+            detailIntent.putExtra("url", mInfo.getUrl());
             detailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(detailIntent);
         }

@@ -18,9 +18,13 @@ import java.util.Collections;
 
 public class nextPage extends AppCompatActivity {
     private String mUrl;
-    private String Title="",subTitle="";
+    private String Title="",subTitle="", date="", time="", url="";
     private String[] s1;
     private String[] s2;
+    private String[] s3;
+    private String[] s4;
+    private String[] s5;
+    private String[] temp;
     private ArrayList<WebInfo> mWebInfo;
     private RecyclerView mRecyclerView;
     private WebAdapter mAdapter;
@@ -53,9 +57,39 @@ public class nextPage extends AppCompatActivity {
                     }
                     i++;
                 }
+                i = 0;
+                for(Element select : doc.getElementsByClass("date")){
+                    date += select.text()+"\n\n\n";
+                    if(i>18){
+                        break;
+                    }
+                    i++;
+                }
+                i = 0;
+                for(Element select : doc.getElementsByClass("hour")){
+                    time += select.text()+"\n\n\n";
+                    if(i>18){
+                        break;
+                    }
+                    i++;
+                }
+                i = 0;
+                for(Element select : doc.select("h3 > a[href]")){
+                    if(i>=2) {
+                        temp = select.attributes().toString().split("\"");
+                        url += temp[1] + "\n\n\n";
+                    }
+                    if(i>20){
+                        break;
+                    }
+                    i++;
+                }
                 s1 = Title.split("\n\n\n");
                 s2 = subTitle.split("\n\n\n");
-                //Log.d("apple", s1[0]+"\n"+s2[0]);
+                s3 = date.split("\n\n\n");
+                s4 = time.split("\n\n\n");
+                s5 = url.split("\n\n\n");
+                //Log.d("lljbklpo", url);
 
 
                 // 實作recycler view
@@ -127,7 +161,7 @@ public class nextPage extends AppCompatActivity {
         // Create the ArrayList of Sports objects with the titles and
         // information about each sport
         for (int x = 0; x < s1.length; x++) {
-            mWebInfo.add(new WebInfo(s1[x], s2[x]+"..."));
+            mWebInfo.add(new WebInfo(s1[x], s2[x]+"...", s3[x]+" "+s4[x], s5[x]));
         }
 
         // Recycle the typed array.
