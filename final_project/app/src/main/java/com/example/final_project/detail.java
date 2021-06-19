@@ -17,28 +17,30 @@ import java.io.IOException;
 import java.util.Collections;
 
 public class detail extends AppCompatActivity {
-    private TextView mTextView;
+    private TextView mTextViewTitle, mTextViewBody;
     String body="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        mTextView = (TextView)findViewById(R.id.textView2);
+        mTextViewTitle = (TextView)findViewById(R.id.detail_title);
+        mTextViewBody = (TextView)findViewById(R.id.textView2);
         Intent intent = getIntent();
+        mTextViewTitle.setText(intent.getStringExtra("title"));
         new Thread((Runnable) () -> {
             try {
                 Document doc = (Document) Jsoup.connect(intent.getStringExtra("url")).get();//解析html
                 for(Element select : doc.select("div > p")){
                     if(select.text()!="") {
-                        body += select.text() + "\n\n\n";
+                        body += select.text() + "\n\n";
                     }
                 }
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mTextView.setText(body);
+                        mTextViewBody.setText(body);
                     }
                 });
             } catch (IOException e) {

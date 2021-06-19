@@ -112,6 +112,7 @@ class WebAdapter extends RecyclerView.Adapter<WebAdapter.ViewHolder>  {
         public void onClick(View view) {
             WebInfo mInfo = Information.get(getAdapterPosition());
             Intent detailIntent = new Intent(mContext, detail.class);
+            detailIntent.putExtra("title", mInfo.getTitle());
             detailIntent.putExtra("url", mInfo.getUrl());
             detailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(detailIntent);
