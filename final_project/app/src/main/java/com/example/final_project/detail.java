@@ -27,7 +27,7 @@ public class detail extends AppCompatActivity {
     private ImageView imageView;
     String body="";
     String mPictureSrc="";
-    private Bitmap mbitmap;
+    private Bitmap mbitmap=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +50,17 @@ public class detail extends AppCompatActivity {
                     mPictureSrc += select.attr("abs:src");
                     break;
                 }
-                mbitmap = returnBitMap(mPictureSrc);
+                if(mPictureSrc!="") {
+                    mbitmap = returnBitMap(mPictureSrc);
+                }
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         mTextViewBody.setText(body);
-                        imageView.setImageBitmap(mbitmap);
+                        if(mbitmap!=null) {
+                            imageView.setImageBitmap(mbitmap);
+                        }
                     }
                 });
             } catch (IOException e) {
